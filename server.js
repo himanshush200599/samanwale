@@ -24,10 +24,7 @@ mongoose.connect(
 );
 
 app.get("/", (req, res) => {
-  res.json({
-    name: "Himanshu sharma",
-    Email: "himanshush@gmail.com"
-  });
+  res.render("main/home");
 });
 
 const port = process.env.PORT || 5000;
