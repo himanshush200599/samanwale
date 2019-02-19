@@ -11,6 +11,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/public"));
+//routes
+const mainRoutes = require("./routes/mainRoutes");
+const user = require("./routes/user");
+app.use(mainRoutes);
+app.use(user);
 
 mongoose.connect(
   "mongodb://root:abc123@ds141815.mlab.com:41815/amazon-clone",
@@ -22,10 +28,6 @@ mongoose.connect(
     }
   }
 );
-
-app.get("/", (req, res) => {
-  res.render("main/home");
-});
 
 const port = process.env.PORT || 5000;
 app.listen(port, err => {

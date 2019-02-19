@@ -1,0 +1,22 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.bg-navbar {
+  background-color: #8785a2;
+}
+.form-css {
+  max-height: 560px;
+  overflow-y: hidden;
+}
+.img-logo {
+  border-radius: 100%;
+}
+.signup {
+  background: #f9f8eb;
+}
+#w {
+  color: #05004e;
+  font-weight: bolder;
+}
