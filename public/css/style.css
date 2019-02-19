@@ -8,7 +8,6 @@ body {
 }
 .form-css {
   max-height: 560px;
-  overflow-y: hidden;
 }
 .img-logo {
   border-radius: 100%;

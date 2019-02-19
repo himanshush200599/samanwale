@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const ejsMate = require("ejs-mate");
+const session = require("express-session");
+const flash = require("express-flash");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
@@ -12,6 +15,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+app.use(cookieParser());
+app.use(flash());
+app.use(
+  session({
+    resave: true,
+    saveUninitialized: true,
+    secret: "Himanshu sharma"
+  })
+);
+
 //routes
 const mainRoutes = require("./routes/mainRoutes");
 const user = require("./routes/user");
