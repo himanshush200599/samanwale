@@ -6,7 +6,9 @@ const ejsMate = require("ejs-mate");
 const session = require("express-session");
 const flash = require("express-flash");
 const cookieParser = require("cookie-parser");
-
+const secret = require("./config/secret");
+const MongoStore = require("connect-mongo")(session);
+const passport = require("passport");
 const app = express();
 
 //middlewares
@@ -21,9 +23,20 @@ app.use(
   session({
     resave: true,
     saveUninitialized: true,
-    secret: "Himanshu sharma"
+    secret: "Himanshu sharma",
+    store: new MongoStore({
+      url: secret.database,
+      autoReconnect: true
+    })
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  res.locals.signMsg = req.flash("signMsg");
+  next();
+});
 
 //routes
 const mainRoutes = require("./routes/mainRoutes");
@@ -32,7 +45,7 @@ app.use(mainRoutes);
 app.use(user);
 
 mongoose.connect(
-  "mongodb://root:abc123@ds141815.mlab.com:41815/amazon-clone",
+  secret.database,
   err => {
     if (err) {
       console.log(err);
