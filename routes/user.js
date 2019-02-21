@@ -68,7 +68,7 @@ router.post("/signup", function(req, res, next) {
               "signMsg",
               `Welcome ${user.profile.name}.You are registered!!`
             );
-            res.redirect("/");
+            return res.redirect("/");
           });
         });
       }
