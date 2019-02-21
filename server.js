@@ -9,6 +9,7 @@ const cookieParser = require("cookie-parser");
 const secret = require("./config/secret");
 const MongoStore = require("connect-mongo")(session);
 const passport = require("passport");
+let Category = require("./models/category");
 const app = express();
 
 //middlewares
@@ -39,12 +40,21 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  Category.find({}, function(err, categories) {
+    if (err) return next(err);
+    res.locals.categories = categories;
+    next();
+  });
+});
+
 //routes
 const mainRoutes = require("./routes/mainRoutes");
 const user = require("./routes/user");
+const adminRoutes = require("./routes/admin");
 app.use(mainRoutes);
 app.use(user);
-
+app.use(adminRoutes);
 mongoose.connect(
   secret.database,
   err => {

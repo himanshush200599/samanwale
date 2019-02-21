@@ -16,6 +16,18 @@
       </button>
       <div id="navb" class="navbar-collapse collapse hide">
         <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item">
+            <div class="dropdown">
+  <button  type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Categories
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <%for(let i=0;i<categories.length;i++){%>
+      <a class="dropdown-item" href="#"><%=categories[i].name%></a>
+      <%}%>
+  </div>
+</div>
+          </li>
         <%if(!user){%>
           <li class="nav-item">
             <a class="nav-link font-weight-bold" href="/signup"
