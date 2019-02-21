@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require("../models/user");
 const passport = require("passport");
 const passportConf = require("../config/passport");
-
+const { ensureAuthenticated } = require("../config/auth");
 router.get("/login", (req, res) => {
   if (req.user) return res.redirect("/");
   res.render("accounts/login", { message: req.flash("loginMessage") });
@@ -18,7 +18,7 @@ router.post(
   })
 );
 
-router.get("/profile", function(req, res, next) {
+router.get("/profile", ensureAuthenticated, function(req, res, next) {
   console.log(req.user);
   User.findOne({ _id: req.user._id }, function(err, user) {
     if (err) return next(err);
@@ -59,6 +59,7 @@ router.post("/signup", function(req, res, next) {
         user.profile.name = name;
         user.email = email;
         user.password = password;
+        user.profile.picture = user.gravatar();
         user.save(function(err, user) {
           if (err) return next(err);
           req.logIn(user, err => {
@@ -67,9 +68,7 @@ router.post("/signup", function(req, res, next) {
               "signMsg",
               `Welcome ${user.profile.name}.You are registered!!`
             );
-            res.render("main/home", {
-              signMsg: req.flash("signMsg")
-            });
+            res.redirect("/");
           });
         });
       }
@@ -80,4 +79,23 @@ router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });
+
+router.get("/edit-profile", ensureAuthenticated, function(req, res, next) {
+  res.render("accounts/edit-profile", { message: req.flash("success") });
+});
+
+router.post("/edit-profile", ensureAuthenticated, function(req, res, next) {
+  User.findOne({ _id: req.user._id }, function(err, user) {
+    if (err) return next(err);
+    if (req.body.name) user.profile.name = req.body.name;
+    if (req.body.address) user.profile.address = req.body.address;
+    console.log(user.profile.address);
+    user.save(function(err) {
+      if (err) return next(err);
+      req.flash("success", "Successfully Edited your profile");
+      return res.redirect("/edit-profile");
+    });
+  });
+});
+
 module.exports = router;

@@ -6,6 +6,133 @@
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
   <span aria-hidden="true">&times;</span>
   </button>
+  <%}%>
 </div>
-<%}%>
+
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to SamanWale!</h1>
+  <h2 class="display-5">Shop more and Save big</h2>
+  <p class="lead">We provide best products for our customer at resonable rates</p>
+  <hr class="my-4">
+
+  <%if(!user){%>
+    <p>Sign up to explore wide ranges of products.</p>
+  <a class="btn btn-primary btn-lg" href="/signup" role="button">Signup</a>
+  <%}else{%>
+    <p>Visit your  profile .</p>
+      <a class="btn btn-secondary btn-lg" href="/profile" role="button">Visit your profile</a>
+  <%}%>
+</div>
+
+<h2 class="text-center dark-grey-text font-up font-bold spacing my-4 pt-2 pb-2 wow fadeIn" data-wow-delay="0.2s">
+  <strong>Why Choose Us</strong>
+</h2>
+
+<div class="container-fluid">
+  <div class="container">
+
+    <!-- Section: Features v.1 -->
+    <section class="text-center my-5">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-4">
+
+          <i class="fa fa-id-badge fa-3x red-text"></i>
+          <h5 class="font-weight-bold my-theme-red my-4">
+            <a href="#">Verified Sellers</a>
+          </h5>
+          <p class="font-weight-bold mb-md-0 mb-5">Our sellers are verified & approved by our team of mentors to give the best shopping experience.
+          </p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4">
+
+          <i class="fa fa-shield fa-3x cyan-text"></i>
+          <h5 class="font-weight-bold my-theme-red my-4">
+            <a href="#">Secure Payment</a>
+          </h5>
+          <p class="font-weight-bold mb-md-0 mb-5">Our payment gateways and policies are secure, to allow you to focus on shopping and performance.
+          </p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4">
+
+          <i class="fa fa-calendar fa-3x orange-text"></i>
+          <h5 class="font-weight-bold my-theme-red my-4">
+            <a href="#">Shopping Tracking</a>
+          </h5>
+          <p class="font-weight-bold mb-0">We track shopping hours ,so that we provide you discount coupons.
+          </p>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+      <br>
+      <br>
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-4">
+
+          <i class="fa fa-shopping-cart fa-3x"></i>
+          <h5 class="font-weight-bold my-theme-red my-4">
+            <a href="#">Personalized Shoppping</a>
+          </h5>
+          <p class="font-weight-bold mb-md-0 mb-5">Manage all your products with our interative dashboard, get everything you require at one place.
+          </p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4">
+
+          <i class="fa  fa-area-chart fa-3x cyan-text"></i>
+          <h5 class="font-weight-bold my-theme-red my-4">
+            <a href="#">Performance Track</a>
+          </h5>
+          <p class="font-weight-bold mb-md-0 mb-5">Samanwale offers regular coupons & discount on the basis of your records.
+          </p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4">
+
+          <i class="fa fa-cart-plus fa-3x orange-text"></i>
+          <h5 class="font-weight-bold my-theme-red my-4">
+            <a href="#">Fast and Efficient</a>
+          </h5>
+          <p class="font-weight-bold mb-0">The whole process is seamless & systematic, You just have to shopping and leave the rest to us.
+          </p>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </section>
+    <!-- Section: Features v.1 -->
+
+    <hr class="between-sections">
+
+  </div>
+</div>
+
 </div>

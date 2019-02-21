@@ -2,6 +2,8 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
+  background: #f9f8eb;
 }
 .bg-navbar {
   background-color: #8785a2;
@@ -9,11 +11,23 @@ body {
 .form-css {
   max-height: 560px;
 }
+footer {
+  background-color: #8785a2;
+  color: white;
+  font-weight: bolder;
+  border-top: 1px solid #e7e7e7;
+  text-align: center;
+  padding: 20px;
+  position: absolute;
+  height: 60px;
+  margin-top: 2rem;
+  width: 100%;
+}
 .img-logo {
   border-radius: 100%;
 }
 .signup {
-  background: #f9f8eb;
+  margin-top: 3rem;
 }
 #w {
   color: #05004e;

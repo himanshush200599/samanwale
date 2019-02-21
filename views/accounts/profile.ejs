@@ -1,1 +1,17 @@
 <% layout('boilerplate') -%>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col md-4 mt-2">
+      <img class="rounded-circle img-fluid img-center" src="<%= user.profile.picture %>" alt="">
+      <br>
+      <p class="mt-2" >Name:<%=user.profile.name%></p>
+      <p>Email:<%= user.email %></p>
+      <%if(user.profile.address ==='' || typeof user.profile.address==="undefined"){%>
+          <p>Address : <span class="text-danger font-weight-bold">You have not entered your address</span></p>
+        <%}else{%>
+      <p>Address:<%= user.profile.address %></p>
+      <%}%>
+      <a type="button" name="button" href="/edit-profile" class="btn btn-primary btn-lg">Edit-profile</a>
+    </div>
+  </div>
+</div>
