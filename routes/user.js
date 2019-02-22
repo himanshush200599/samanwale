@@ -6,7 +6,7 @@ const passportConf = require("../config/passport");
 const { ensureAuthenticated } = require("../config/auth");
 router.get("/login", (req, res) => {
   if (req.user) return res.redirect("/");
-  res.render("accounts/login", { message: req.flash("loginMessage") });
+  return res.render("accounts/login", { message: req.flash("loginMessage") });
 });
 
 router.post(
@@ -77,7 +77,7 @@ router.post("/signup", function(req, res, next) {
 });
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/");
+  return res.redirect("/");
 });
 
 router.get("/edit-profile", ensureAuthenticated, function(req, res, next) {

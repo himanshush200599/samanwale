@@ -52,9 +52,11 @@ app.use((req, res, next) => {
 const mainRoutes = require("./routes/mainRoutes");
 const user = require("./routes/user");
 const adminRoutes = require("./routes/admin");
+const apiRoutes = require("./api/api");
 app.use(mainRoutes);
 app.use(user);
 app.use(adminRoutes);
+app.use("/api", apiRoutes);
 mongoose.connect(
   secret.database,
   err => {

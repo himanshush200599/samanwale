@@ -23,7 +23,7 @@
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <%for(let i=0;i<categories.length;i++){%>
-      <a class="dropdown-item" href="#"><%=categories[i].name%></a>
+      <a class="dropdown-item" href="/products/<%=categories[i]._id%>"><%=categories[i].name%></a>
       <%}%>
   </div>
 </div>

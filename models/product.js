@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-
+const Category = require("./category");
 let ProductSchema = new Schema({
   category: {
     type: Schema.Types.ObjectId,
-    ref: Category
+    ref: "Category"
   },
   name: String,
   price: Number,
